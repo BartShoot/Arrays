@@ -8,6 +8,10 @@ Array1D::Array1D(int size)
 {
 	this->size = size;
 	t = new double[size];
+	for (int i = 0; i < size; i++)
+	{
+		t[i] = 0;
+	}
 }
 
 Array1D::Array1D(const Array1D& other)
@@ -29,16 +33,15 @@ Array1D::~Array1D()
 	}
 	t = NULL;
 	size = 0;
-	cout << "Dziala destruktor" << std::endl;
 }
 
 void Array1D::Display()
 {
 	for (int i = 0; i < size; i++)
 	{
-		cout << t[i] << endl;
+		cout << t[i] <<" ";
 	}
-	
+	cout << endl;
 }
 
 void Array1D::SetValue(int i, double value)
@@ -63,4 +66,40 @@ double Array1D::GetValue(int i)
 	{
 		throw "Index out of bounds";
 	}
+}
+
+Array1D& Array1D::operator=(const Array1D& other)
+{
+	this->~Array1D();
+
+	this->size = other.size;
+	t = new double[size];
+	for (int i = 0; i < size; i++)
+	{
+		t[i] = other.t[i];
+	}
+	return *this;
+}
+
+Array1D& Array1D::operator=(double value)
+{
+	for (int i = 0; i < size; i++)
+	{
+		t[i] = value;
+	}
+	return *this;
+}
+
+double& Array1D::operator[](int i)
+{
+	return t[i];
+}
+
+ostream& operator<<(ostream& out, const Array1D& other)
+{
+	for (int i = 0; i < other.size; i++)
+	{
+		out << other.t[i] << " ";
+	}
+	return out;
 }

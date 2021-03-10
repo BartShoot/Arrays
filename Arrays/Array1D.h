@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+using namespace std;
+
 class Array1D
 {
 private:
@@ -14,5 +17,11 @@ public:
 	void SetValue(int i, double value);
 	double GetValue(int i);
 
+	Array1D& operator=(const Array1D& other);
+	Array1D& operator=(double value);
+
+	double& operator[](int i);
+
+	friend ostream& operator<<(ostream& out, const Array1D& other);
 };
 
