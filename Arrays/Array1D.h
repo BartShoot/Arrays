@@ -23,5 +23,7 @@ public:
 	double& operator[](int i);
 
 	friend ostream& operator<<(ostream& out, const Array1D& other);
+	Array1D operator+(const Array1D& other);
+	friend Array1D operator-(const Array1D& a1, const Array1D& a2);
 };
 

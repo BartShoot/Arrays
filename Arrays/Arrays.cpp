@@ -17,6 +17,7 @@ int main()
     a1 = a2;
     a2 = 4;
     a2[2] = 10;
+    a3 = a2 - a2;
 
     cout << a1 << endl;
     cout << a2 << endl;

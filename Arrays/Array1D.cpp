@@ -95,6 +95,24 @@ double& Array1D::operator[](int i)
 	return t[i];
 }
 
+Array1D Array1D::operator+(const Array1D& other)
+{
+	if (this->size == other.size)
+	{
+		Array1D t(*this);
+
+		for (int i = 0; i < size; i++)
+		{
+			t[i] += other.t[i];
+		}
+		return t;
+	}
+	else
+	{
+		throw "Rozmiary tablic maja rozne wielkosci";
+	}
+}
+
 ostream& operator<<(ostream& out, const Array1D& other)
 {
 	for (int i = 0; i < other.size; i++)
@@ -102,4 +120,22 @@ ostream& operator<<(ostream& out, const Array1D& other)
 		out << other.t[i] << " ";
 	}
 	return out;
+}
+
+Array1D operator-(const Array1D& a1, const Array1D& a2)
+{
+	if (a1.size == a2.size)
+	{
+		Array1D t(a1);
+
+		for (int i = 0; i < a1.size; i++)
+		{
+			t[i] -= a2.t[i];
+		}
+		return t;
+	}
+	else
+	{
+		throw "Rozmiary tablic maja rozne wielkosci";
+	}
 }
